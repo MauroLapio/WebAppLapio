@@ -4,7 +4,7 @@
 
     <groupId>it.itismeucci</groupId>
     <artifactId>WebAppLapio</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>WebAppLapio</name>
@@ -21,8 +21,14 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.19</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>

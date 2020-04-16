@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>GetUtenti</servlet-name>
-        <servlet-class>it.itismeucci.webapplapio.servlet.GetUtenti</servlet-class>
+        <servlet-name>GetClassi</servlet-name>
+        <servlet-class>it.itismeucci.webapplapio.servlet.GetClassi</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GetUtenti</servlet-name>
-        <url-pattern>/GetUtenti</url-pattern>
+        <servlet-name>GetClassi</servlet-name>
+        <url-pattern>/GetClassi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

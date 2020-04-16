@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GetUtenti extends HttpServlet
+public class GetClassi extends HttpServlet
 {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -29,29 +29,32 @@ public class GetUtenti extends HttpServlet
             out.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">\n");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Utenti</h1>");
+            out.println("<button class=\"btn btn-primary\" onclick=\"history.go(-1)\">BACK</button>");
+            out.println("<h1>Classi</h1>");
             out.println("<table class='table'>\n");
             out.println("<thead>\n");
             out.println("<tr>\n");
             out.println("<th>ID</th>\n");
-            out.println("<th>Nome</th>\n");
+            out.println("<th>Anno</th>\n");
+            out.println("<th>Sezione</th>\n");
             out.println("</tr>\n");
             out.println("</thead>\n");
             out.println("<tbody>\n");
             
-            String query = "SELECT id, nome From Utenti";
+            String query = "SELECT * FROM class";
             ResultSet rs = stmt.executeQuery(query);
             
-            String idUtente;
-            String nomeUtente;
+            String idClasse;
+            String annoClasse;
+            String sezioneClasse;
             
             while(rs.next())
             {
-                idUtente = rs.getString(1);
-                nomeUtente = rs.getString(2);
-                out.println("Output: "+idUtente + nomeUtente);
+                idClasse = rs.getString(1);
+                annoClasse = rs.getString(2);
+                sezioneClasse = rs.getString(3);
                 
-                out.println("<tr>\n<td>" + idUtente +"</td>\n<td>" + nomeUtente + "</td>\n</tr>\n");
+                out.println("<tr>\n<td>" + idClasse +"</td>\n<td>" + annoClasse + "</td>\n<td>" + sezioneClasse + "</td>\n</tr>\n");
             }
             
             out.println("</body>");
@@ -65,10 +68,10 @@ public class GetUtenti extends HttpServlet
     
     protected Connection getConnection()
     {
-        String dbDRIVER = "com.mysql.cj.jdbc.Driver";
+        String dbDRIVER = "com.mysql.jdbc.Driver";
         Connection con = null;
 
-        String dbName = "servletlapiodb";
+        String dbName = "fi_itis_meucci";
         String dbUser = "root";
         String dbPass = "password";
 
@@ -86,41 +89,19 @@ public class GetUtenti extends HttpServlet
             
         return con;
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         processRequest(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo()
     {
